@@ -1,0 +1,20 @@
+{
+  "name": "lab42/mvc-project-24",
+  "description": "Учебный фреймворк",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "version": "0.0.1",
+  "authors": [
+    {
+      "name": "Илья Кошарский",
+      "email": "elirector@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "app\\": "./"
+    }
+  },
+  "require": {
+  }
+}
