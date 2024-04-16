@@ -16,5 +16,6 @@
     }
   },
   "require": {
+    "psr/log": "^3.0@dev"
   }
 }

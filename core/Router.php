@@ -45,6 +45,7 @@ class Router
         $callback = $this->routes[$method][$path];
         if (empty($callback)) {
             $this->response->setStatusCode(Response::HTTP_SERVER_ERROR);
+            Application::$app->getLogger()->error("Router: Callback not found");
             throw new RouteException(route: $path, method:$method, message: "Callback not found");
         }
         if (is_string($callback)) {

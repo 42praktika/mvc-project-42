@@ -13,6 +13,8 @@ class Application
     private Router $router;
     private Response $response;
 
+    private Logger $logger;
+
     /**
      * @return Response
      */
@@ -28,6 +30,7 @@ class Application
         $this->response = new Response();
         $this->response->setStatusCode(Response::HTTP_OK);
         $this->router = new Router($this->request, $this->response);
+        $this->logger = new Logger(PROJECT_DIR."/runtime/logs/".$_ENV["APP_LOG"]);
     }
 
     /**
@@ -46,6 +49,7 @@ class Application
             default:
             {
                 $this->response->setStatusCode(Response::HTTP_SERVER_ERROR);
+                $this->logger->error("Router: Unknown method");
                 throw new RouteException($path, $method, "Unknown method");
             }
         }
@@ -78,6 +82,14 @@ class Application
         } catch (\Exception $e) {
             echo "Generic error: " . $e->getMessage();
         }
+    }
+
+    /**
+     * @return Logger
+     */
+    public function getLogger(): Logger
+    {
+        return $this->logger;
     }
 
 
