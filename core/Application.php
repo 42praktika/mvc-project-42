@@ -14,6 +14,7 @@ class Application
     private Response $response;
 
     private Logger $logger;
+    private Database $database;
 
     /**
      * @return Response
@@ -31,6 +32,8 @@ class Application
         $this->response->setStatusCode(Response::HTTP_OK);
         $this->router = new Router($this->request, $this->response);
         $this->logger = new Logger(PROJECT_DIR."/runtime/logs/".$_ENV["APP_LOG"]);
+        $this->database = new Database($_ENV["DB_DSN"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"]);
+
     }
 
     /**
@@ -90,6 +93,14 @@ class Application
     public function getLogger(): Logger
     {
         return $this->logger;
+    }
+
+    /**
+     * @return Database
+     */
+    public function getDatabase(): Database
+    {
+        return $this->database;
     }
 
 
