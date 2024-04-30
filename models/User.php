@@ -16,6 +16,6 @@ class User extends DBModel
 
     function getAttributes(): array
     {
-       return ["first_name", "second_name", "age", "job", "email"];
+       return ["first_name", "second_name", "age", "job", "email", "phone"];
     }
 }

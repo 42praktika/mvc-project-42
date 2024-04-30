@@ -26,6 +26,9 @@ echo "Добрый вечер, сегодня " . date("l j F");
     <label>EMail
         <input type="text" name="email"/>
     </label>
+    <label>Phone
+        <input type="text" name="phone"/>
+    </label>
     <input type="submit" value="Погнали">
 
 </form>
