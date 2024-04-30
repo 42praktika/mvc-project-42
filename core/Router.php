@@ -61,7 +61,7 @@ class Router
     }
 
 
-    public function renderView(string $name): void
+    public function renderView(string $name, array $context=[]): void
     {
         require PROJECT_DIR."/views/".$name.".php";
     }

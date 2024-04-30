@@ -6,15 +6,28 @@ namespace app\core;
 
 abstract class Model
 {
-    public function loadData(array $data): Model
+   protected ?int $id;
+
+   public function __construct(?int $id)
+   {
+       $this->id = $id;
+   }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
     {
-        foreach ($data as $key => $value) {
-            if (!property_exists($this, $key)) {
-                continue;
-            }
-            $this->$key = $value;
-        }
-        return $this;
+        return $this->id;
     }
+
+    /**
+     * @param int|null $id
+     */
+    public function setId(?int $id): void
+    {
+        $this->id = $id;
+    }
+
 
 }
