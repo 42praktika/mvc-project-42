@@ -40,13 +40,13 @@ class Router
         if (!isset($this->routes[$method][$path])) {
             $this->response->setStatusCode(Response::HTTP_NOT_FOUND);
             $this->renderStatic("404.html");
-           return;
+            return;
         }
         $callback = $this->routes[$method][$path];
         if (empty($callback)) {
             $this->response->setStatusCode(Response::HTTP_SERVER_ERROR);
             Application::$app->getLogger()->error("Router: Callback not found");
-            throw new RouteException(route: $path, method:$method, message: "Callback not found");
+            throw new RouteException(route: $path, method: $method, message: "Callback not found");
         }
         if (is_string($callback)) {
             $this->renderView($callback);
@@ -61,9 +61,14 @@ class Router
     }
 
 
-    public function renderView(string $name, array $context=[]): void
+    public function renderView(string $name, array $context = []): void
     {
-        require PROJECT_DIR."/views/".$name.".php";
+        require PROJECT_DIR . "/views/" . $name . ".php";
     }
 
+
+    public function renderTemplate(string $name, array $context = []): void
+    {
+        Template::View($name, $context);
+    }
 }

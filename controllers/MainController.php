@@ -13,7 +13,7 @@ class MainController
 {
     public function getView(Request $request): void
     {
-        Application::$app->getRouter()->renderView("form");
+        Application::$app->getRouter()->renderTemplate("index.html", ["action"=>"handle"]);
     }
 
     /**
@@ -34,7 +34,7 @@ class MainController
 
         }
 
-       Application::$app->getRouter()->renderView("success", ["users"=>$users]);
+       Application::$app->getRouter()->renderTemplate("success.html", ["users"=>$users]);
     }
 
 

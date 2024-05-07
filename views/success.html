@@ -1,0 +1,45 @@
+{% include 'layout.html' %}
+
+{% block title %}Успешный успех{% endblock %}
+
+{% block styles %}
+@parent
+.success {color: forestgreen}
+{% endblock %}
+
+{% block content %}
+
+<H1 class='success'>Успех!</H1>
+
+<H1>Список пользователей: </H1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Возраст</th>
+        <th>Работа</th>
+        <th>E-Mail</th>
+        <th>Телефон</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% foreach ($users->getNextRow() as $user) : %}
+    <tr>
+        <td><?= $user->getFirstName() ?></td>
+        <td><?= $user->getSecondName() ?></td>
+        <td><?= $user->getAge() ?></td>
+        <td><?= $user->getJob() ?></td>
+        <td><?= $user->getEmail() ?></td>
+        <td><?= $user->getPhone() ?></td>
+
+    </tr>
+
+    {% endforeach; %}
+    </tbody>
+</table>
+
+<a href="/">На главную</a>
+
+{% endblock %}
